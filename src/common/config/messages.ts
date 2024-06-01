@@ -45,5 +45,7 @@ export class CustomMessage {
     FAILED_TO_FETCH_USER: "Failed to fetch existing user",
     FAILED_LOGIN: "Login failed",
     INTERNAL_SERVER_ERROR: "Internal server error",
+    INVALID_PASSWORD: "Invalid password",
+    INVALID_USER: "Invalid User"
   };
 }
