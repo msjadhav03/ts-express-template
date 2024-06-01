@@ -61,6 +61,7 @@ export class UserService {
     } catch (error) {
       console.log(error);
       return CustomResponse.sendErrorResponse(
+        StatusCode.STATUS_CODE.INTERNAL_SERVER_ERROR,
         CustomMessage.MESSAGES.FAILED_TO_CREATE_USER,
         error
       );
@@ -78,6 +79,7 @@ export class UserService {
       );
     } catch (error) {
       return CustomResponse.sendErrorResponse(
+        StatusCode.STATUS_CODE.INTERNAL_SERVER_ERROR,
         CustomMessage.MESSAGES.FAILED_TO_DELETE_USER,
         error
       );
@@ -98,6 +100,7 @@ export class UserService {
       );
     } catch (error) {
       return CustomResponse.sendErrorResponse(
+        StatusCode.STATUS_CODE.INTERNAL_SERVER_ERROR,
         CustomMessage.MESSAGES.FAILED_TO_UPDATE_USER,
         error
       );
@@ -116,10 +119,11 @@ export class UserService {
         );
       }
       if (!bcrypt.compareSync(password, user.password)) {
-         return CustomResponse.sendErrorResponse(
-           CustomMessage.MESSAGES.FAILED_LOGIN,
-           "Invalid Password"
-         );
+        return CustomResponse.sendErrorResponse(
+          StatusCode.STATUS_CODE.BAD_REQUEST,
+          CustomMessage.MESSAGES.FAILED_LOGIN,
+          "Invalid Password"
+        );
       }
       const token = await jwt.sign(
         { username: user.username, role: user.role },
@@ -139,6 +143,7 @@ export class UserService {
       );
     } catch (error) {
       return CustomResponse.sendErrorResponse(
+        StatusCode.STATUS_CODE.INTERNAL_SERVER_ERROR,
         CustomMessage.MESSAGES.FAILED_LOGIN,
         error
       );

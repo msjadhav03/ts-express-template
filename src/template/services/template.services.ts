@@ -32,7 +32,11 @@ export class TemplateService {
         [{ testTitle: "test Title", testQualityIndex: 80 }]
       );
     } catch (error: any) {
-      return CustomResponse.sendErrorResponse(CustomMessage.MESSAGES.FAILED_TO_CREATE, error);
+      return CustomResponse.sendErrorResponse(
+        StatusCode.STATUS_CODE.INTERNAL_SERVER_ERROR,
+        CustomMessage.MESSAGES.FAILED_TO_CREATE,
+        error
+      );
     }
   };
 
@@ -57,6 +61,7 @@ export class TemplateService {
       );
     } catch (error: any) {
       return CustomResponse.sendErrorResponse(
+        StatusCode.STATUS_CODE.INTERNAL_SERVER_ERROR,
         CustomMessage.MESSAGES.FAILED_TO_UPDATE,
         error
       );
@@ -80,6 +85,7 @@ export class TemplateService {
       );
     } catch (error: any) {
       return CustomResponse.sendErrorResponse(
+        StatusCode.STATUS_CODE.INTERNAL_SERVER_ERROR,
         CustomMessage.MESSAGES.FAILED_TO_DELETE,
         error
       );
@@ -102,6 +108,7 @@ export class TemplateService {
       );
     } catch (error: any) {
       return CustomResponse.sendErrorResponse(
+        StatusCode.STATUS_CODE.INTERNAL_SERVER_ERROR,
         CustomMessage.MESSAGES.FAILED_TO_FETCH,
         error
       );

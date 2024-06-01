@@ -63,9 +63,13 @@ export class CustomResponse {
    * @param: [error] Actual error
    * @returns: formatted error response
    */
-  static sendErrorResponse = (message: string, error: any): responseType => {
+  static sendErrorResponse = (
+    statusCode: number,
+    message: string,
+    error: any
+  ): responseType => {
     return {
-      statusCode: StatusCode.STATUS_CODE.INTERNAL_SERVER_ERROR,
+      statusCode,
       message: message,
       error: error.toString(),
     };
