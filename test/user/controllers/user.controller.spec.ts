@@ -4,10 +4,10 @@ import { UserService } from "../../../src/user/services/user.services";
 
 jest.mock("../../../src/user/services/user.services", () => ({
   UserService: {
-    addTest: jest.fn(),
-    fetchTest: jest.fn(),
-    deleteTest: jest.fn(),
-    updateTest: jest.fn(),
+    addUserToDatabase: jest.fn(),
+    removeUserFromDatabase: jest.fn(),
+    updateUserFromDatabase: jest.fn(),
+    checkUserExists: jest.fn(),
   },
 }));
 
@@ -25,14 +25,8 @@ const mockRequestBody = { name: "testName" };
 const mockRequest = { body: mockRequestBody } as any;
 
 describe("UserController", () => {
-  describe("testControllerFunction", () => {
-    it("should give success response", () => {
-      UserController.testControllerFunction(req, res);
-      expect(res.send).toHaveBeenCalled();
-    });
-  });
-  describe("addNewTest", () => {
-    it("it should call addTest and also return 200", async () => {
+  describe("addUser", () => {
+    it("it should call addUser and also return 200", async () => {
       const mockServiceResponse = {
         statusCode: 200,
         message: "Test added successfully",
@@ -97,7 +91,7 @@ describe("UserController", () => {
       };
 
       const mockServiceloginUser = jest
-        .spyOn(UserService, "fetchTest")
+        .spyOn(UserService, "checkUserExists")
         .mockResolvedValue(mockServiceResponse);
 
       const mockResponse = { status: jest.fn(), send: jest.fn() } as any;
@@ -127,7 +121,7 @@ describe("UserController", () => {
       };
 
       const mockServiceloginUser = jest
-        .spyOn(UserService, "fetchTest")
+        .spyOn(UserService, "checkUserExists")
         .mockResolvedValue(mockServiceResponse);
 
       const mockResponse = { status: jest.fn(), send: jest.fn() } as any;
@@ -155,7 +149,7 @@ describe("UserController", () => {
       };
 
       const mockServiceRemoveTest = jest
-        .spyOn(UserService, "deleteTest")
+        .spyOn(UserService, "removeUserFromDatabase")
         .mockResolvedValue(mockServiceResponse);
 
       const mockResponse = { status: jest.fn(), send: jest.fn() } as any;
@@ -164,7 +158,7 @@ describe("UserController", () => {
         "sendResponse"
       );
 
-      await UserController.removeTest(mockRequest, mockResponse);
+      await UserController.deleteUser(mockRequest, mockResponse);
 
       expect(mockServiceRemoveTest).toHaveBeenCalled();
 
@@ -187,7 +181,7 @@ describe("UserController", () => {
       };
 
       const mockServiceRemoveTest = jest
-        .spyOn(UserService, "deleteTest")
+        .spyOn(UserService, "removeUserFromDatabase")
         .mockRejectedValue(mockServiceResponse);
 
       const mockResponse = {
@@ -199,14 +193,14 @@ describe("UserController", () => {
         "sendResponse"
       );
 
-      await UserController.removeTest(mockRequest, mockResponse);
+      await UserController.deleteUser(mockRequest, mockResponse);
       expect(mockServiceRemoveTest).toHaveBeenCalled();
       expect(mockCustomResponseSendResponse).toHaveBeenCalled();
     });
   });
 
-  describe("modifyTest", () => {
-    it("it should give success response after calling modify test", async () => {
+  describe("updateUser", () => {
+    it("it should give success response after calling updateUser", async () => {
       jest.clearAllMocks();
 
       jest.clearAllMocks();
@@ -219,7 +213,7 @@ describe("UserController", () => {
       };
 
       jest
-        .spyOn(UserService, "updateTest")
+        .spyOn(UserService, "updateUserFromDatabase")
         .mockRejectedValue(mockServiceResponse);
 
       const mockResponse = {
@@ -231,7 +225,7 @@ describe("UserController", () => {
         "sendResponse"
       );
 
-      await UserController.modifyTest(mockRequest, mockResponse);
+      await UserController.updateUser(mockRequest, mockResponse);
       //   expect(mockAddUserToDatabase).toHaveBeenCalled();
       expect(mockCustomResponseSendResponse).toHaveBeenCalled();
     });
@@ -245,7 +239,7 @@ describe("UserController", () => {
         error: "Error",
       };
 
-      (UserService.updateTest as jest.Mock).mockRejectedValueOnce(
+      (UserService.updateUserFromDatabase as jest.Mock).mockRejectedValueOnce(
         mockServiceResponse
       );
       const mockResponse = {
@@ -257,7 +251,7 @@ describe("UserController", () => {
         "sendResponse"
       );
 
-      await UserController.modifyTest(mockRequest, mockResponse);
+      await UserController.updateUser(mockRequest, mockResponse);
       //   expect(mockServiceModifyTest).toHaveBeenCalled();
       expect(mockCustomResponseSendResponse).toHaveBeenCalled();
     });

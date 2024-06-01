@@ -13,6 +13,7 @@ import { CustomMessage } from "../../common/config/messages";
 import { StatusCode } from "../../common/config/status-codes";
 import { UserService } from "../services/user.services";
 import { CustomResponse } from "../../common/utils/format-repsonse";
+import { responseType } from "../../common/config/types";
 
 export class UserController {
   /**
@@ -54,16 +55,16 @@ export class UserController {
    */
   static updateUser = async (req: Request, res: Response): Promise<any> => {
     try {
+      const response = await UserService.updateUserFromDatabase({
+        ...req.body,
+        ...req.params,
+      });
       return CustomResponse.sendResponse(
         res,
-        StatusCode.STATUS_CODE.OK,
-        CustomMessage.MESSAGES.SUCCESS_TO_UPDATE_USER,
-        [
-          {
-            name: "Manisha",
-            username: "msjadhav2323@gmail.com",
-          },
-        ]
+        response.statusCode,
+        response.message,
+        response.data,
+        response.error
       );
     } catch (error) {
       return CustomResponse.sendResponse(
@@ -86,17 +87,15 @@ export class UserController {
    */
   static deleteUser = async (req: Request, res: Response): Promise<any> => {
     try {
+      const response: responseType = await UserService.removeUserFromDatabase({
+        ...req.params,
+      });
       return CustomResponse.sendResponse(
         res,
-        StatusCode.STATUS_CODE.OK,
-        CustomMessage.MESSAGES.SUCCESS_TO_DELETE_USER,
-        [
-          {
-            name: "Manisha",
-            username: "msjadhav2323@gmail.com",
-          },
-        ],
-        undefined
+        response.statusCode,
+        response.message,
+        response.data,
+        response.error
       );
     } catch (error) {
       return CustomResponse.sendResponse(
@@ -119,17 +118,15 @@ export class UserController {
    */
   static loginUser = async (req: Request, res: Response): Promise<any> => {
     try {
+      const response: responseType = await UserService.checkUserExists(
+        req.body
+      );
       return CustomResponse.sendResponse(
         res,
-        StatusCode.STATUS_CODE.CREATED,
-        CustomMessage.MESSAGES.LOGIN_SUCCESS,
-        [
-          {
-            name: "Manisha",
-            username: "msjadhav2323@gmail.com",
-          },
-        ],
-        undefined
+        response.statusCode,
+        response.message,
+        response.data,
+        response.error
       );
     } catch (error) {
       return CustomResponse.sendResponse(
