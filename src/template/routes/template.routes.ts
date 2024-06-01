@@ -10,6 +10,7 @@
  */
 
 import { Router } from "express";
+import { CustomConstant } from "../../common/config/constants";
 import { TemplateController } from "../controllers/template.controllers";
 const testRouter = Router();
 
@@ -78,7 +79,10 @@ const testRouter = Router();
  *                   description: A error message
  *                   error: system generated error message
  */
-testRouter.get("/template", TemplateController.readTest);
+testRouter.get(
+  `${CustomConstant.TEMPLATE_BASE_URL}`,
+  TemplateController.readTest
+);
 
 /**
  * @swagger
@@ -161,7 +165,10 @@ testRouter.get("/template", TemplateController.readTest);
  *                   description: A error message
  *                   error: system generated error message
  */
-testRouter.post("/template", TemplateController.addNewTest);
+testRouter.post(
+  `${CustomConstant.TEMPLATE_BASE_URL}`,
+  TemplateController.addNewTest
+);
 
 /**
  * @swagger
@@ -249,7 +256,10 @@ testRouter.post("/template", TemplateController.addNewTest);
  *                   description: A error message
  *                   error: system generated error message
  */
-testRouter.patch("/template/:id", TemplateController.modifyTest);
+testRouter.patch(
+  `${CustomConstant.TEMPLATE_BASE_URL}/:id`,
+  TemplateController.modifyTest
+);
 
 /**
  * @swagger
@@ -324,6 +334,9 @@ testRouter.patch("/template/:id", TemplateController.modifyTest);
  *                   error: system generated error message
  *
  */
-testRouter.delete("/template/:id", TemplateController.removeTest);
+testRouter.delete(
+  `${CustomConstant.TEMPLATE_BASE_URL}`,
+  TemplateController.removeTest
+);
 
 export default testRouter;

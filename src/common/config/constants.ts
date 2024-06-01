@@ -44,7 +44,7 @@ export class CustomConstant {
   };
 
   static SWAGGER_BASE_URI = "/docs";
-  static BASE_URL = "/test";
+  static TEMPLATE_BASE_URL = "/template";
   static USER_BASE_URL = "/user";
   static LOGIN_URL = "/login";
 }

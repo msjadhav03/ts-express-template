@@ -69,7 +69,8 @@ export class UserService {
 
   static removeUserFromDatabase = async (data: any): Promise<any> => {
     try {
-      let finalResponse: object = {};
+      const result: any = await User.findOneAndDelete({ _id: data.id });
+      let finalResponse: object = { ...result };
       return CustomResponse.sendSuccessResponse(
         StatusCode.STATUS_CODE.OK,
         CustomMessage.MESSAGES.SUCCESS_TO_DELETE_USER,
@@ -85,7 +86,11 @@ export class UserService {
 
   static updateUserFromDatabase = async (data: any): Promise<any> => {
     try {
-      let finalResponse: object = {};
+      const result: any = await User.findOneAndUpdate(
+        { _id: data.id },
+        { $set: data }
+      );
+      let finalResponse: object = { ...result };
       return CustomResponse.sendSuccessResponse(
         StatusCode.STATUS_CODE.OK,
         CustomMessage.MESSAGES.SUCCESS_TO_UPDATE_USER,
@@ -101,7 +106,32 @@ export class UserService {
 
   static checkUserExists = async (data: any): Promise<any> => {
     try {
-      let finalResponse: object = {};
+      const { username, password } = data;
+      const user = await User.findOne({ username: username });
+      if (!user) {
+        return CustomResponse.sendErrorResponse(
+          StatusCode.STATUS_CODE.BAD_REQUEST,
+          CustomMessage.MESSAGES.FAILED_LOGIN,
+          "Invalid Username"
+        );
+      }
+      if (!bcrypt.compareSync(password, user.password)) {
+         return CustomResponse.sendErrorResponse(
+           CustomMessage.MESSAGES.FAILED_LOGIN,
+           "Invalid Password"
+         );
+      }
+      const token = await jwt.sign(
+        { username: user.username, role: user.role },
+        JWT_SECRET,
+        { expiresIn: "1h" }
+      );
+
+      let finalResponse: object = {
+        token,
+        role: user.role,
+        username: user.username,
+      };
       return CustomResponse.sendSuccessResponse(
         StatusCode.STATUS_CODE.OK,
         CustomMessage.MESSAGES.LOGIN_SUCCESS,

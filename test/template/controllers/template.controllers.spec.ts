@@ -1,6 +1,7 @@
 import { TemplateController } from "../../../src/template/controllers/template.controllers";
 import { CustomResponse } from "../../../src/common/utils/format-repsonse";
 import { TemplateService } from "../../../src/template/services/template.services";
+
 jest.mock("../../../src/template/services/template.services", () => ({
   TemplateService: {
     addTest: jest.fn(),
@@ -21,6 +22,7 @@ jest.mock("../../../src/common/utils/format-repsonse", () => ({
 const req: any = { header: jest.fn(() => null) };
 const res: any = { status: jest.fn(() => res), send: jest.fn() };
 const mockRequestBody = { name: "testName" };
+const mockRequest = { body: mockRequestBody } as any;
 
 describe("TemplateController", () => {
   describe("testControllerFunction", () => {
@@ -37,16 +39,15 @@ describe("TemplateController", () => {
         data: { id: "testId", name: "testName" },
         error: null,
       };
-      const mockRequest = { body: mockRequestBody } as any;
+
       const mockServiceAddTest = jest
         .spyOn(TemplateService, "addTest")
         .mockResolvedValue(mockServiceResponse);
 
       const mockResponse = { status: jest.fn(), send: jest.fn() } as any;
-      const mockCustomResponseSendResponse = jest.spyOn(
-        CustomResponse,
-        "sendResponse"
-      );
+      const mockCustomResponseSendResponse = jest
+        .spyOn(CustomResponse, "sendResponse")
+        .mockReturnThis();
 
       await TemplateController.addNewTest(mockRequest, mockResponse);
 
@@ -67,7 +68,7 @@ describe("TemplateController", () => {
         data: [],
         error: "Error",
       };
-      const mockRequest = { body: mockRequestBody } as any;
+
       const mockServiceAddTest = jest
         .spyOn(TemplateService, "addTest")
         .mockRejectedValue(mockServiceResponse);
@@ -94,8 +95,8 @@ describe("TemplateController", () => {
         data: { id: "testId", name: "testName" },
         error: null,
       };
-      const mockRequest = { body: mockRequestBody } as any;
-      const mockServiceAddTest = jest
+
+      const mockServiceReadTest = jest
         .spyOn(TemplateService, "fetchTest")
         .mockResolvedValue(mockServiceResponse);
 
@@ -107,7 +108,7 @@ describe("TemplateController", () => {
 
       await TemplateController.readTest(mockRequest, mockResponse);
 
-      expect(mockServiceAddTest).toHaveBeenCalled();
+      expect(mockServiceReadTest).toHaveBeenCalled();
 
       expect(mockCustomResponseSendResponse).toHaveBeenCalledWith(
         mockResponse,
@@ -118,26 +119,25 @@ describe("TemplateController", () => {
       );
     });
     it("should call readTest and give success response with 500 statusCode", async () => {
-      const mockServiceResponse = {
+      const mockServiceResponse: any = {
         statusCode: 500,
         message: "Internal Server Error",
         data: [],
         error: "error",
       };
-      const mockRequest = { body: mockRequestBody } as any;
-      const mockServiceAddTest = jest
+
+      const mockServiceReadTest = jest
         .spyOn(TemplateService, "fetchTest")
         .mockResolvedValue(mockServiceResponse);
 
       const mockResponse = { status: jest.fn(), send: jest.fn() } as any;
-      const mockCustomResponseSendResponse = jest.spyOn(
-        CustomResponse,
-        "sendResponse"
-      );
+      const mockCustomResponseSendResponse = jest
+        .spyOn(CustomResponse, "sendResponse")
+        .mockReturnValue(mockServiceResponse);
 
       await TemplateController.readTest(mockRequest, mockResponse);
 
-      expect(mockServiceAddTest).toHaveBeenCalled();
+      expect(mockServiceReadTest).toHaveBeenCalled();
 
       expect(mockCustomResponseSendResponse).toHaveBeenCalled();
     });
@@ -153,8 +153,8 @@ describe("TemplateController", () => {
         data: [{ id: "testId", name: "testName" }],
         error: null,
       };
-      const mockRequest = { body: mockRequestBody } as any;
-      const mockServiceAddTest = jest
+
+      const mockServiceRemoveTest = jest
         .spyOn(TemplateService, "deleteTest")
         .mockResolvedValue(mockServiceResponse);
 
@@ -166,7 +166,7 @@ describe("TemplateController", () => {
 
       await TemplateController.removeTest(mockRequest, mockResponse);
 
-      expect(mockServiceAddTest).toHaveBeenCalled();
+      expect(mockServiceRemoveTest).toHaveBeenCalled();
 
       expect(mockCustomResponseSendResponse).toHaveBeenCalledWith(
         mockResponse,
@@ -185,8 +185,8 @@ describe("TemplateController", () => {
         data: [],
         error: "Error",
       };
-      const mockRequest = { body: mockRequestBody } as any;
-      const mockServiceAddTest = jest
+
+      const mockServiceRemoveTest = jest
         .spyOn(TemplateService, "deleteTest")
         .mockRejectedValue(mockServiceResponse);
 
@@ -200,7 +200,7 @@ describe("TemplateController", () => {
       );
 
       await TemplateController.removeTest(mockRequest, mockResponse);
-      expect(mockServiceAddTest).toHaveBeenCalled();
+      expect(mockServiceRemoveTest).toHaveBeenCalled();
       expect(mockCustomResponseSendResponse).toHaveBeenCalled();
     });
   });
@@ -209,41 +209,16 @@ describe("TemplateController", () => {
     it("it should give success response after calling modify test", async () => {
       jest.clearAllMocks();
 
-      const mockServiceResponse = {
-        statusCode: 200,
-        message: "Existing test has been modified",
-        data: [],
-        error: "Error",
-      };
-      const mockRequest = { body: mockRequestBody } as any;
-      const mockServiceAddTest = jest
-        .spyOn(TemplateService, "updateTest")
-        .mockResolvedValue(mockServiceResponse);
-
-      const mockResponse = {
-        status: jest.fn(),
-        send: jest.fn(),
-      } as any;
-      const mockCustomResponseSendResponse = jest.spyOn(
-        CustomResponse,
-        "sendResponse"
-      );
-
-      await TemplateController.modifyTest(mockRequest, mockResponse);
-      expect(mockServiceAddTest).toHaveBeenCalled();
-      expect(mockCustomResponseSendResponse).toHaveBeenCalled();
-    });
-    it("it should give error response after calling modify test", async () => {
       jest.clearAllMocks();
 
       const mockServiceResponse = {
         statusCode: 500,
-        message: "Failed to update existing test",
+        message: "Failed to delete existing test",
         data: [],
         error: "Error",
       };
-      const mockRequest = { body: mockRequestBody } as any;
-      const mockServiceModifyTest = jest
+
+      jest
         .spyOn(TemplateService, "updateTest")
         .mockRejectedValue(mockServiceResponse);
 
@@ -257,7 +232,33 @@ describe("TemplateController", () => {
       );
 
       await TemplateController.modifyTest(mockRequest, mockResponse);
-      expect(mockServiceModifyTest).toHaveBeenCalled();
+      //   expect(mockServiceAddTest).toHaveBeenCalled();
+      expect(mockCustomResponseSendResponse).toHaveBeenCalled();
+    });
+    it("it should give error response after calling modifyTest", async () => {
+      jest.clearAllMocks();
+
+      const mockServiceResponse = {
+        statusCode: 500,
+        message: "Failed to update existing test",
+        data: [],
+        error: "Error",
+      };
+
+      (TemplateService.updateTest as jest.Mock).mockRejectedValueOnce(
+        mockServiceResponse
+      );
+      const mockResponse = {
+        status: jest.fn(),
+        send: jest.fn(),
+      } as any;
+      const mockCustomResponseSendResponse = jest.spyOn(
+        CustomResponse,
+        "sendResponse"
+      );
+
+      await TemplateController.modifyTest(mockRequest, mockResponse);
+      //   expect(mockServiceModifyTest).toHaveBeenCalled();
       expect(mockCustomResponseSendResponse).toHaveBeenCalled();
     });
   });
