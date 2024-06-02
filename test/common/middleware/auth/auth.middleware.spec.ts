@@ -1,3 +1,12 @@
+/**
+ * @file auth.middleware.spec.ts
+ * @description This file contains contains unit test cases for auth.middleware.ts
+ * @author Manisha Jadhav
+ * @created May 30, 2024
+ * @license ISC License
+
+ * @version 1.0.0
+ */
 import { Auth } from "../../../../src/common/middleware/auth/auth.middleware";
 import jwt from "jsonwebtoken";
 

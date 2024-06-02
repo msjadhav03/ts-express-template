@@ -291,6 +291,7 @@ userRouter.delete(
   `${CustomConstant.USER_BASE_URL}/:id`,
   UserController.deleteUser
 );
+
 userRouter.post(`${CustomConstant.LOGIN_URL}`, UserController.loginUser);
 
 export default userRouter;

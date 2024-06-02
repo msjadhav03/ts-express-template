@@ -1,3 +1,13 @@
+/**
+ * @file template.services.spec.ts
+ * @description This file contains contains unit test cases for  template.services.spec.ts
+ * @author Manisha Jadhav
+ * @created May 30, 2024
+ * @license ISC License
+
+ * @version 1.0.0
+ */
+
 import { TemplateService } from "../../../src/template/services/template.services";
 import { CustomResponse } from "../../../src/common/utils/format-repsonse";
 

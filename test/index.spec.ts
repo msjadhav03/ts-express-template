@@ -1,3 +1,13 @@
+/**
+ * @file index.spec.ts
+ * @description This file contains contains unit test cases for index.services.ts
+ * @author Manisha Jadhav
+ * @created May 30, 2024
+ * @license ISC License
+
+ * @version 1.0.0
+ */
+
 import express, { Application } from "express";
 import { bootstrapServer } from "../src/index";
 import { UserController } from "../src/user/controllers/user.controllers";

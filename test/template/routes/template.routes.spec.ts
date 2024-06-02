@@ -1,3 +1,13 @@
+/**
+ * @file template.routes.spec.ts
+ * @description This file contains contains unit test cases for  template.routes.spec.ts
+ * @author Manisha Jadhav
+ * @created May 30, 2024
+ * @license ISC License
+
+ * @version 1.0.0
+ */
+
 import { CustomConstant } from "../../../src/common/config/constants";
 import testRouter from "../../../src/template/routes/template.routes";
 

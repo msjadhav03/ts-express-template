@@ -24,14 +24,8 @@ export class DBConnectivity {
    */
   static connectToMongo = async () => {
     try {
-      mongoose
-        .connect(MONGO_URI)
-        .then(() => {
-          console.log("[mongodb] Connected to MongoDB");
-        })
-        .catch((error) => {
-          console.error("Error connecting to MongoDB:", error);
-        });
+      mongoose.connect(MONGO_URI);
+      console.log("[mongodb] Connected to MongoDB");
     } catch (error: any) {
       console.log(error);
       throw new Error(error);

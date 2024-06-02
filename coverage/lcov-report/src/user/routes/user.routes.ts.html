@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/9</span>
+                <span class='fraction'>9/9</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -359,7 +359,8 @@
 <a name='L294'></a><a href='#L294'>294</a>
 <a name='L295'></a><a href='#L295'>295</a>
 <a name='L296'></a><a href='#L296'>296</a>
-<a name='L297'></a><a href='#L297'>297</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L297'></a><a href='#L297'>297</a>
+<a name='L298'></a><a href='#L298'>298</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -370,11 +371,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -475,7 +476,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -575,7 +576,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -648,13 +649,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
  * @file user.routes.ts
  * @description This file contains user route definitions
@@ -666,11 +668,11 @@
  * @requires express
  */
 &nbsp;
-<span class="cstat-no" title="statement not covered" >import { Router } from "express";</span>
-const userRouter = <span class="cstat-no" title="statement not covered" >Router();</span>
+import { Router } from "express";
+const userRouter = Router();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >import { CustomConstant } from "../../common/config/constants";</span>
-<span class="cstat-no" title="statement not covered" >import { UserController } from "../controllers/user.controllers";</span>
+import { CustomConstant } from "../../common/config/constants";
+import { UserController } from "../controllers/user.controllers";
 &nbsp;
 /**
  * Below routes are responsible for handling User authorization and authetication request requests
@@ -771,7 +773,7 @@ const userRouter = <span class="cstat-no" title="statement not covered" >Router(
  *                   error: system generated error message
  */
 &nbsp;
-<span class="cstat-no" title="statement not covered" >userRouter.post(`${CustomConstant.USER_BASE_URL}`, UserController.addUser);</span>
+userRouter.post(`${CustomConstant.USER_BASE_URL}`, UserController.addUser);
 &nbsp;
 /**
  * @swagger
@@ -871,7 +873,7 @@ const userRouter = <span class="cstat-no" title="statement not covered" >Router(
  *                   description: A error message
  *                   error: system generated error message
  */
-<span class="cstat-no" title="statement not covered" >userRouter.patch(`${CustomConstant.USER_BASE_URL}`, UserController.updateUser);</span>
+userRouter.patch(`${CustomConstant.USER_BASE_URL}`, UserController.updateUser);
 &nbsp;
 /**
  * @swagger
@@ -944,13 +946,14 @@ const userRouter = <span class="cstat-no" title="statement not covered" >Router(
  *                   description: A error message
  *                   error: system generated error message
  */
-<span class="cstat-no" title="statement not covered" >userRouter.delete(</span>
+userRouter.delete(
   `${CustomConstant.USER_BASE_URL}/:id`,
   UserController.deleteUser
 );
-<span class="cstat-no" title="statement not covered" >userRouter.post(`${CustomConstant.LOGIN_URL}`, UserController.loginUser);</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export default userRouter;</span>
+userRouter.post(`${CustomConstant.LOGIN_URL}`, UserController.loginUser);
+&nbsp;
+export default userRouter;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -958,7 +961,7 @@ const userRouter = <span class="cstat-no" title="statement not covered" >Router(
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-06-01T19:03:26.554Z
+                at 2024-06-02T08:37:46.967Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -1,12 +1,22 @@
+/**
+ * @file user.services.spec.ts
+ * @description This file contains contains unit test cases for user.services.ts
+ * @author Manisha Jadhav
+ * @created May 30, 2024
+ * @license ISC License
+
+ * @version 1.0.0
+ */
+
 import { UserService } from "../../../src/user/services/user.services";
 import { CustomResponse } from "../../../src/common/utils/format-repsonse";
 
 jest.mock("bcrypt", () => ({
-  hash: jest.fn().mockResolvedValue("dsghsdhsdhj"),
+  hash: jest.fn().mockResolvedValue("some hash"),
 }));
 
 jest.mock("jsonwebtoken", () => ({
-  sign: jest.fn().mockResolvedValue("sdhjsdsdhjhbnf"),
+  sign: jest.fn().mockResolvedValue("some value"),
 }));
 
 jest.mock("../../../src/common/utils/format-repsonse", () => ({

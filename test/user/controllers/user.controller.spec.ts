@@ -1,3 +1,13 @@
+/**
+ * @file user.controller.spec.ts
+ * @description This file contains contains unit test cases for  user.controller.spec.ts
+ * @author Manisha Jadhav
+ * @created May 30, 2024
+ * @license ISC License
+
+ * @version 1.0.0
+ */
+
 import { UserController } from "../../../src/user/controllers/user.controllers";
 import { CustomResponse } from "../../../src/common/utils/format-repsonse";
 import { UserService } from "../../../src/user/services/user.services";
