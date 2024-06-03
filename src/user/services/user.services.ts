@@ -24,6 +24,13 @@ const JWT_SECRET: any = process.env.JWT_SECRET;
 const EXPIRES_IN: any = process.env.EXPIRES_IN;
 
 export class UserService {
+  /**
+   * @function: addUserToDatabase
+   * @description: Adding user to database
+   * @param: [data] Data to be inserted
+   * @returns: success response or Error Response
+   * @author: Manisha Jadhav
+   */
   static addUserToDatabase = async (data: any): Promise<any> => {
     try {
       const { username, password, role, firstName, lastName } = data;
@@ -68,6 +75,46 @@ export class UserService {
     }
   };
 
+  /**
+   * @function: getAllUserList
+   * @description: Fetching list of user from database
+   * @returns: success response or Error Response
+   * @author: Manisha Jadhav
+   */
+  static getAllUserList = async (): Promise<any> => {
+    try {
+      const users = await User.find(
+        {},
+        {
+          _id: 1,
+          username: 1,
+          role: 1,
+          firstName: 1,
+          lastName: 1,
+        }
+      );
+      return CustomResponse.sendSuccessResponse(
+        StatusCode.STATUS_CODE.CREATED,
+        CustomMessage.MESSAGES.SUCCESS_TO_CREATE_USER,
+        [users]
+      );
+    } catch (error) {
+      console.log(error);
+      return CustomResponse.sendErrorResponse(
+        StatusCode.STATUS_CODE.INTERNAL_SERVER_ERROR,
+        CustomMessage.MESSAGES.FAILED_TO_FETCH_USER,
+        error
+      );
+    }
+  };
+
+  /**
+   * @function: removeUserFromDatabase
+   * @description: Removing user to database
+   * @param: [data] Data to be deleted
+   * @returns: success response or Error Response
+   * @author: Manisha Jadhav
+   */
   static removeUserFromDatabase = async (data: any): Promise<any> => {
     try {
       const result: any = await User.findOneAndDelete({ _id: data.id });
@@ -86,6 +133,13 @@ export class UserService {
     }
   };
 
+  /**
+   * @function: updateUserFromDatabase
+   * @description: Updating user to database
+   * @param: [data] Data to be deleted
+   * @returns: success response or Error Response
+   * @author: Manisha Jadhav
+   */
   static updateUserFromDatabase = async (data: any): Promise<any> => {
     try {
       const result: any = await User.findOneAndUpdate(
@@ -107,6 +161,13 @@ export class UserService {
     }
   };
 
+  /**
+   * @function: checkUserExists
+   * @description: Check if user exists to database
+   * @param: [data] Data to be deleted
+   * @returns: success response or Error Response
+   * @author: Manisha Jadhav
+   */
   static checkUserExists = async (data: any): Promise<any> => {
     try {
       const { username, password } = data;

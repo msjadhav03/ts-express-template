@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1717318979219" clover="3.2.0">
-  <project timestamp="1717318979219" name="All files">
-    <metrics statements="243" coveredstatements="221" conditionals="25" coveredconditionals="9" methods="50" coveredmethods="45" elements="318" coveredelements="275" complexity="0" loc="243" ncloc="243" packages="11" files="15" classes="15"/>
+<coverage generated="1717370133233" clover="3.2.0">
+  <project timestamp="1717370133234" name="All files">
+    <metrics statements="255" coveredstatements="227" conditionals="25" coveredconditionals="10" methods="54" coveredmethods="47" elements="334" coveredelements="284" complexity="0" loc="255" ncloc="255" packages="11" files="15" classes="15"/>
     <package name="src">
       <metrics statements="24" coveredstatements="21" conditionals="2" coveredconditionals="1" methods="4" coveredmethods="1"/>
       <file name="index.ts" path="/Users/manisha-j/personal-pro/senior-set/ts-express-rest/src/index.ts">
@@ -40,11 +40,11 @@
         <line num="13" count="2" type="stmt"/>
         <line num="15" count="2" type="stmt"/>
         <line num="16" count="2" type="stmt"/>
-        <line num="38" count="2" type="stmt"/>
         <line num="46" count="2" type="stmt"/>
-        <line num="47" count="2" type="stmt"/>
-        <line num="48" count="2" type="stmt"/>
-        <line num="49" count="2" type="stmt"/>
+        <line num="54" count="2" type="stmt"/>
+        <line num="55" count="2" type="stmt"/>
+        <line num="56" count="2" type="stmt"/>
+        <line num="57" count="2" type="stmt"/>
       </file>
       <file name="messages.ts" path="/Users/manisha-j/personal-pro/senior-set/ts-express-rest/src/common/config/messages.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -213,34 +213,39 @@
       </file>
     </package>
     <package name="src.user.controllers">
-      <metrics statements="25" coveredstatements="23" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="8"/>
+      <metrics statements="30" coveredstatements="24" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="8"/>
       <file name="user.controllers.ts" path="/Users/manisha-j/personal-pro/senior-set/ts-express-rest/src/user/controllers/user.controllers.ts">
-        <metrics statements="25" coveredstatements="23" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="8"/>
+        <metrics statements="30" coveredstatements="24" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="8"/>
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
-        <line num="27" count="2" type="stmt"/>
-        <line num="28" count="2" type="stmt"/>
-        <line num="29" count="2" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="38" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="55" count="2" type="stmt"/>
         <line num="56" count="2" type="stmt"/>
         <line num="57" count="2" type="stmt"/>
-        <line num="58" count="2" type="stmt"/>
-        <line num="62" count="0" type="stmt"/>
-        <line num="70" count="2" type="stmt"/>
-        <line num="88" count="2" type="stmt"/>
-        <line num="89" count="2" type="stmt"/>
-        <line num="90" count="2" type="stmt"/>
-        <line num="93" count="1" type="stmt"/>
-        <line num="101" count="1" type="stmt"/>
-        <line num="119" count="2" type="stmt"/>
-        <line num="120" count="2" type="stmt"/>
-        <line num="121" count="2" type="stmt"/>
-        <line num="124" count="2" type="stmt"/>
-        <line num="132" count="0" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="66" count="1" type="stmt"/>
+        <line num="84" count="2" type="stmt"/>
+        <line num="85" count="2" type="stmt"/>
+        <line num="86" count="2" type="stmt"/>
+        <line num="90" count="0" type="stmt"/>
+        <line num="98" count="2" type="stmt"/>
+        <line num="116" count="2" type="stmt"/>
+        <line num="117" count="2" type="stmt"/>
+        <line num="118" count="2" type="stmt"/>
+        <line num="121" count="1" type="stmt"/>
+        <line num="129" count="1" type="stmt"/>
+        <line num="147" count="2" type="stmt"/>
+        <line num="148" count="2" type="stmt"/>
+        <line num="149" count="2" type="stmt"/>
+        <line num="152" count="2" type="stmt"/>
+        <line num="160" count="0" type="stmt"/>
       </file>
     </package>
     <package name="src.user.models">
@@ -253,9 +258,9 @@
       </file>
     </package>
     <package name="src.user.routes">
-      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="user.routes.ts" path="/Users/manisha-j/personal-pro/senior-set/ts-express-rest/src/user/routes/user.routes.ts">
-        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="12" count="1" type="stmt"/>
         <line num="13" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
@@ -263,14 +268,15 @@
         <line num="117" count="1" type="stmt"/>
         <line num="217" count="1" type="stmt"/>
         <line num="290" count="1" type="stmt"/>
-        <line num="295" count="1" type="stmt"/>
-        <line num="297" count="1" type="stmt"/>
+        <line num="359" count="1" type="stmt"/>
+        <line num="441" count="1" type="stmt"/>
+        <line num="443" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.user.services">
-      <metrics statements="50" coveredstatements="41" conditionals="4" coveredconditionals="0" methods="10" coveredmethods="8"/>
+      <metrics statements="56" coveredstatements="45" conditionals="4" coveredconditionals="1" methods="12" coveredmethods="10"/>
       <file name="user.services.ts" path="/Users/manisha-j/personal-pro/senior-set/ts-express-rest/src/user/services/user.services.ts">
-        <metrics statements="50" coveredstatements="41" conditionals="4" coveredconditionals="0" methods="10" coveredmethods="8"/>
+        <metrics statements="56" coveredstatements="45" conditionals="4" coveredconditionals="1" methods="12" coveredmethods="10"/>
         <line num="12" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
@@ -282,45 +288,51 @@
         <line num="23" count="1" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
-        <line num="27" count="1" type="stmt"/>
-        <line num="28" count="1" type="stmt"/>
-        <line num="29" count="1" type="stmt"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
-        <line num="32" count="1" type="stmt"/>
-        <line num="33" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="41" count="0" type="stmt"/>
         <line num="43" count="0" type="stmt"/>
-        <line num="46" count="1" type="stmt"/>
-        <line num="51" count="1" type="stmt"/>
-        <line num="56" count="1" type="stmt"/>
-        <line num="62" count="1" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
         <line num="63" count="1" type="stmt"/>
-        <line num="71" count="2" type="stmt"/>
-        <line num="72" count="2" type="stmt"/>
-        <line num="73" count="2" type="stmt"/>
-        <line num="74" count="2" type="stmt"/>
-        <line num="75" count="2" type="stmt"/>
-        <line num="81" count="2" type="stmt"/>
-        <line num="89" count="1" type="stmt"/>
-        <line num="90" count="1" type="stmt"/>
-        <line num="91" count="1" type="stmt"/>
-        <line num="95" count="1" type="stmt"/>
-        <line num="96" count="1" type="stmt"/>
+        <line num="69" count="1" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="84" count="1" type="stmt"/>
+        <line num="85" count="1" type="stmt"/>
+        <line num="86" count="1" type="stmt"/>
+        <line num="96" count="0" type="stmt"/>
         <line num="102" count="1" type="stmt"/>
-        <line num="110" count="1" type="stmt"/>
-        <line num="111" count="1" type="stmt"/>
-        <line num="112" count="1" type="stmt"/>
-        <line num="113" count="1" type="stmt"/>
-        <line num="114" count="1" type="cond" truecount="0" falsecount="1"/>
-        <line num="115" count="0" type="stmt"/>
-        <line num="121" count="1" type="cond" truecount="0" falsecount="1"/>
-        <line num="122" count="0" type="stmt"/>
-        <line num="128" count="0" type="stmt"/>
-        <line num="134" count="0" type="stmt"/>
-        <line num="139" count="0" type="stmt"/>
+        <line num="103" count="1" type="stmt"/>
+        <line num="118" count="2" type="stmt"/>
+        <line num="119" count="2" type="stmt"/>
+        <line num="120" count="2" type="stmt"/>
+        <line num="121" count="2" type="stmt"/>
+        <line num="122" count="2" type="stmt"/>
+        <line num="128" count="2" type="stmt"/>
+        <line num="143" count="1" type="stmt"/>
+        <line num="144" count="1" type="stmt"/>
         <line num="145" count="1" type="stmt"/>
+        <line num="149" count="1" type="stmt"/>
+        <line num="150" count="1" type="stmt"/>
+        <line num="156" count="1" type="stmt"/>
+        <line num="171" count="1" type="stmt"/>
+        <line num="172" count="1" type="stmt"/>
+        <line num="173" count="1" type="stmt"/>
+        <line num="174" count="1" type="stmt"/>
+        <line num="175" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="176" count="1" type="stmt"/>
+        <line num="182" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="183" count="0" type="stmt"/>
+        <line num="189" count="0" type="stmt"/>
+        <line num="195" count="0" type="stmt"/>
+        <line num="200" count="0" type="stmt"/>
+        <line num="206" count="0" type="stmt"/>
       </file>
     </package>
   </project>

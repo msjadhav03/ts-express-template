@@ -292,6 +292,152 @@ userRouter.delete(
   UserController.deleteUser
 );
 
+/**
+ * @swagger
+ * /user:
+ *   get:
+ *     summary: Get list of all users
+ *     tags: [User]
+ *     responses:
+ *       200:
+ *         description: A successful response
+ *         content:
+ *           application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                 statusCode:
+ *                   type: integer
+ *                   description: HTTP status code
+ *                   example: 200
+ *                 message:
+ *                   type: string
+ *                   description: Response message
+ *                   example: "Success true"
+ *                 data:
+ *                   type: array
+ *                   description: Array of data
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       firstName:
+ *                         type: string
+ *                         description: User's firstName
+ *                         example: Manisha
+ *                       lastName:
+ *                         type: string
+ *                         description: User's lastname
+ *                         example: Jadhav
+ *                       username:
+ *                         type: string
+ *                         description: User's username or email
+ *                         example: m.jadhav@gmail.com
+ *                       role:
+ *                         type: string
+ *                         description: User's role
+ *                         example: General
+ *       500:
+ *         description: Some server error
+ *         content:
+ *           application/json:
+ *            schema:
+ *               type: object
+ *               properties:
+ *                 statusCode:
+ *                   type: integer
+ *                   description: Status Code of the error response
+ *                   example: 500
+ *                 message:
+ *                   type: string
+ *                   description: Custom Error message
+ *                   example: Database connection failed
+ *                 error:
+ *                   type: string
+ *                   description: A error message
+ *                   error: system generated error message
+ */
+userRouter.get(`${CustomConstant.USER_BASE_URL}`, UserController.fetchUser);
+
+/**
+ * @swagger
+ * /login:
+ *   post:
+ *     summary: Authenticate user and get access token
+ *     tags: [Login]
+ *     responses:
+ *       200:
+ *         description: A successful response
+ *         content:
+ *           application/json:
+ *              schema:
+ *                type: object
+ *                properties:
+ *                 statusCode:
+ *                   type: integer
+ *                   description: HTTP status code
+ *                   example: 200
+ *                 message:
+ *                   type: string
+ *                   description: Response message
+ *                   example: "Success true"
+ *                 data:
+ *                   type: array
+ *                   description: Array of data
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       token:
+ *                         type: string
+ *                         description: Access Token
+ *                         example: adshjadsnasdjkasdnmasjfkaj232
+ *                       username:
+ *                         type: string
+ *                         description: User's username or email
+ *                         example: m.jadhav@gmail.com
+ *                       role:
+ *                         type: string
+ *                         description: User's role
+ *                         example: General
+ *       400:
+ *         description: Bad request error
+ *         content:
+ *           application/json:
+ *            schema:
+ *               type: object
+ *               properties:
+ *                 statusCode:
+ *                   type: integer
+ *                   description: Status Code of the error response
+ *                   example: 400
+ *                 message:
+ *                   type: string
+ *                   description: Custom Error message
+ *                   example: Invalid Request body
+ *                 error:
+ *                   type: string
+ *                   description: A error message
+ *                   error: Invalid username || Invalid password
+ *       500:
+ *         description: Some server error
+ *         content:
+ *           application/json:
+ *            schema:
+ *               type: object
+ *               properties:
+ *                 statusCode:
+ *                   type: integer
+ *                   description: Status Code of the error response
+ *                   example: 500
+ *                 message:
+ *                   type: string
+ *                   description: Custom Error message
+ *                   example: Database connection failed
+ *                 error:
+ *                   type: string
+ *                   description: A error message
+ *                   error: system generated error message
+ */
+
 userRouter.post(`${CustomConstant.LOGIN_URL}`, UserController.loginUser);
 
 export default userRouter;

@@ -10,9 +10,14 @@
 
 import { UserService } from "../../../src/user/services/user.services";
 import { CustomResponse } from "../../../src/common/utils/format-repsonse";
+import User from "../../../src/user/models/user.model";
+import bcrypt from "bcrypt";
 
 jest.mock("bcrypt", () => ({
   hash: jest.fn().mockResolvedValue("some hash"),
+  compareSync: jest.fn(() => {
+    return undefined;
+  }),
 }));
 
 jest.mock("jsonwebtoken", () => ({
@@ -29,9 +34,7 @@ jest.mock("../../../src/common/utils/format-repsonse", () => ({
 }));
 
 jest.mock("../../../src/user/models/user.model", () => ({
-  findOne: () => ({
-    exec: jest.fn(),
-  }),
+  findOne: jest.fn(),
   create: () => ({}),
   findOneAndUpdate: () => ({
     exec: () => ({}),
@@ -89,11 +92,23 @@ describe("UserService", () => {
 
   describe("checkUserExists", () => {
     it("should return error response with 500 status code while throwing error from sendSuccessRepsonse", async () => {
+      jest.clearAllMocks();
       const mockCustomErrorResponse = jest.spyOn(
         CustomResponse,
         "sendErrorResponse"
       );
       await UserService.checkUserExists({});
+      expect(mockCustomErrorResponse).toHaveBeenCalled();
+    });
+  });
+
+  describe("fetchUser", () => {
+    it("should return error response with 500 status code while throwing error from sendSuccessRepsonse", async () => {
+      const mockCustomErrorResponse = jest.spyOn(
+        CustomResponse,
+        "sendErrorResponse"
+      );
+      await UserService.getAllUserList();
       expect(mockCustomErrorResponse).toHaveBeenCalled();
     });
   });

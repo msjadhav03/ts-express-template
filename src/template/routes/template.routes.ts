@@ -21,13 +21,6 @@ const testRouter = Router();
  *     summary: Example Summary
  *     tags: [Template]
  *     components:
- *       securitySchemes:
- *         bearerAuth:
- *           type: http
- *           scheme: bearer
- *           bearerFormat: JWT
- *     security:
- *        - bearerAuth: []
  *     responses:
  *       200:
  *         description: A successful response
@@ -91,13 +84,6 @@ testRouter.get(
  *     summary: Example Summary
  *     tags: [Template]
  *     components:
- *       securitySchemes:
- *         bearerAuth:
- *           type: http
- *           scheme: bearer
- *           bearerFormat: JWT
- *     security:
- *        - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -177,13 +163,6 @@ testRouter.post(
  *     summary: Example Summary
  *     tags: [Template]
  *     components:
- *       securitySchemes:
- *         bearerAuth:
- *           type: http
- *           scheme: bearer
- *           bearerFormat: JWT
- *     security:
- *        - bearerAuth: []
  *     requestBody:
  *       content:
  *         application/json:
@@ -268,13 +247,6 @@ testRouter.patch(
  *     summary: Example Summary
  *     tags: [Template]
  *     components:
- *       securitySchemes:
- *         bearerAuth:
- *           type: http
- *           scheme: bearer
- *           bearerFormat: JWT
- *     security:
- *        - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id

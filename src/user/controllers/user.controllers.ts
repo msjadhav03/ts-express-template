@@ -17,6 +17,34 @@ import { responseType } from "../../common/config/types";
 
 export class UserController {
   /**
+   * @function fetchUser
+   * @description To get list of users from database
+   * @param: [req]
+   * @param: [res]
+   * @returns: Success or Error Response
+   * @author: Manisha Jadhav
+   */
+  static fetchUser = async (req: Request, res: Response) => {
+    try {
+      const response = await UserService.getAllUserList();
+      return CustomResponse.sendResponse(
+        res,
+        response.statusCode,
+        response.message,
+        response.data,
+        response.error
+      );
+    } catch (error) {
+      return CustomResponse.sendResponse(
+        res,
+        StatusCode.STATUS_CODE.INTERNAL_SERVER_ERROR,
+        CustomMessage.MESSAGES.FAILED_TO_FETCH_USER,
+        [],
+        error
+      );
+    }
+  };
+  /**
    * @function: addUser
    * @description: This controller function is responsible for handing user creation request
    * @param: [req] Request Object

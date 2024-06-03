@@ -30,8 +30,22 @@ export class CustomConstant {
           url: `${SWAGGER_URL}`,
         },
       ],
+      security: [
+        {
+          AuthToken: [], // Global security definition
+        },
+      ],
+      components: {
+        securitySchemes: {
+          AuthToken: {
+            type: "apiKey",
+            name: "Authorization",
+            in: "header",
+            description: "The token for authentication",
+          },
+        },
+      },
     },
-
     apis: ["./lib/src/template/routes/*.js", "./lib/src/user/routes/*.js"],
   };
 

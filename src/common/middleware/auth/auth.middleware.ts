@@ -36,7 +36,7 @@ export class Auth {
       );
     }
     try {
-      const decoded = jwt.verify(token.split(" ")[1], JWT_SECRET);
+      const decoded = jwt.verify(token.split(" ")[1] || token, JWT_SECRET);
       req.user = decoded;
       next();
     } catch (error) {
