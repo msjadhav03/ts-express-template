@@ -364,6 +364,21 @@ userRouter.get(`${CustomConstant.USER_BASE_URL}`, UserController.fetchUser);
  *   post:
  *     summary: Authenticate user and get access token
  *     tags: [Login]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *                 description: User's username or email
+ *                 example: m.jadhav@gmail.com
+ *               password:
+ *                 type: string
+ *                 description: User's password
+ *                 example: PWD!!12ps
  *     responses:
  *       200:
  *         description: A successful response
