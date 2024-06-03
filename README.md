@@ -48,7 +48,15 @@ npm run start
 
 ## Features ✨
 
-![Swagger](assets/swagger-att.png)
+### Swagger Documentation
+
+![Swagger](assets/swagger1.png)
+![Swagger](assets/swagger2.png)
+
+### Unit Testing
+
+![Unit Testcase](assets/testcase.png)
+![Unit Testcase](assets/testcaseb.png)
 
 ## Contributing 🤝
 
